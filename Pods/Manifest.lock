@@ -1,16 +1,39 @@
 PODS:
   - Alamofire (4.7.2)
+  - AlamofireImage (3.3.1):
+    - Alamofire (~> 4.5)
+  - PromiseKit (4.5.2):
+    - PromiseKit/Foundation (= 4.5.2)
+    - PromiseKit/QuartzCore (= 4.5.2)
+    - PromiseKit/UIKit (= 4.5.2)
+  - PromiseKit/CorePromise (4.5.2)
+  - PromiseKit/Foundation (4.5.2):
+    - PromiseKit/CorePromise
+  - PromiseKit/QuartzCore (4.5.2):
+    - PromiseKit/CorePromise
+  - PromiseKit/UIKit (4.5.2):
+    - PromiseKit/CorePromise
+  - SwiftLint (0.25.1)
 
 DEPENDENCIES:
   - Alamofire (~> 4.7)
+  - AlamofireImage
+  - PromiseKit (~> 4.0)
+  - SwiftLint
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
     - Alamofire
+    - AlamofireImage
+    - PromiseKit
+    - SwiftLint
 
 SPEC CHECKSUMS:
   Alamofire: e4fa87002c137ba2d8d634d2c51fabcda0d5c223
+  AlamofireImage: 3b35b586853abaf94ca1250f4e94cff3c21a4c0d
+  PromiseKit: 743e497a5f505a470d3bbbf4ce0663c1268af0a4
+  SwiftLint: ce933681be10c3266e82576dad676fa815a602e9
 
-PODFILE CHECKSUM: 6bad05a9aebdb62ddd1dffc066af8a0aff4196fa
+PODFILE CHECKSUM: 239cbb5a4efdbf45a49aff587a8c64b43dc68315
 
 COCOAPODS: 1.5.0

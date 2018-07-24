@@ -8,7 +8,7 @@
 
 import XCTest
 
-class weatherUITests: XCTestCase {
+class WeatherUITests: XCTestCase {
         
     override func setUp() {
         super.setUp()
