@@ -9,7 +9,7 @@
 import XCTest
 @testable import weather
 
-class weatherTests: XCTestCase {
+class WeatherTests: XCTestCase {
     
     override func setUp() {
         super.setUp()

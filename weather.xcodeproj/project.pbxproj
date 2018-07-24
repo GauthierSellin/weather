@@ -133,9 +133,9 @@
 		1D2263422102121E0072B571 /* weather */ = {
 			isa = PBXGroup;
 			children = (
+				1D2263432102121E0072B571 /* AppDelegate.swift */,
 				1D2263712102123D0072B571 /* Model */,
 				1D2263902104B6970072B571 /* WeatherApi.swift */,
-				1D2263432102121E0072B571 /* AppDelegate.swift */,
 				1D2263452102121E0072B571 /* ViewController.swift */,
 				1D2263472102121E0072B571 /* Main.storyboard */,
 				1D22634A2102121F0072B571 /* Assets.xcassets */,
@@ -194,6 +194,7 @@
 				1D22633D2102121E0072B571 /* Frameworks */,
 				1D22633E2102121E0072B571 /* Resources */,
 				3A65FE881FCD5E6E28CD21CD /* [CP] Embed Pods Frameworks */,
+				1D4CCFE22107841800A4A176 /* Run SwiftLint */,
 			);
 			buildRules = (
 			);
@@ -313,6 +314,20 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		1D4CCFE22107841800A4A176 /* Run SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Run SwiftLint";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/SwiftLint/swiftlint\"";
+		};
 		3A65FE881FCD5E6E28CD21CD /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -321,10 +336,14 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-weather/Pods-weather-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/AlamofireImage/AlamofireImage.framework",
+				"${BUILT_PRODUCTS_DIR}/PromiseKit/PromiseKit.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PromiseKit.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;

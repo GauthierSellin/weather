@@ -8,24 +8,28 @@
 
 import Foundation
 
-public struct WeatherForecast : Decodable {
+public struct WeatherForecast: Decodable {
+    
+    public let list: [List]
 
-    public struct List : Codable {
-
-        public struct Main : Codable {
-            public let temp : Double
-        }
-
-        public struct Weather : Codable {
-            public let description : String
-            public let icon : String
-        }
-
-        public let main : Main
-        public let weather : [Weather]
-        public let dt_txt : String
+    public struct List: Codable {
+        public let main: Main
+        public let weather: [Weather]
+        // swiftlint:disable all
+        public let dt_txt: String
+        // swiftlint:enable all
+    }
+    
+    public struct Main: Codable {
+        public let temp: Double
+    }
+    
+    public struct Weather: Codable {
+        public let description: String
+        public let icon: String
     }
 
-    public let list : [List]
-
+    public init() {
+        self.list = []
+    }
 }
