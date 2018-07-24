@@ -15,18 +15,32 @@ public struct WeatherForecast: Decodable {
     public struct List: Codable {
         public let main: Main
         public let weather: [Weather]
-        // swiftlint:disable all
-        public let dt_txt: String
-        // swiftlint:enable all
+        public let date: String
+        
+        enum CodingKeys: String, CodingKey {
+            case main, weather, date = "dt_txt"
+        }
+    }
+    
+    enum CodingKeys: String, CodingKey {
+        case list
     }
     
     public struct Main: Codable {
-        public let temp: Double
+        public let temperature: Double
+        
+        enum CodingKeys: String, CodingKey {
+            case temperature = "temp"
+        }
     }
     
     public struct Weather: Codable {
         public let description: String
         public let icon: String
+        
+        enum CodingKeys: String, CodingKey {
+            case description, icon
+        }
     }
 
     public init() {

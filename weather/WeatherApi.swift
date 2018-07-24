@@ -14,7 +14,7 @@ public class WeatherApi {
     
     private let weatherUrl = "https://api.openweathermap.org/data/2.5/forecast?id=6455259&appid=191fd4d1087569b2e5ac9e98043e8402&lang=fr&units=metric"
     
-//    public func getWeather() -> Promise<[WeatherElement]> {
+//    public func getWeather2() -> Promise<[WeatherElement]> {
 //        return Promise<[WeatherElement]> { fulfill, reject in
 //            
 //            var weather = [WeatherElement]()
@@ -53,7 +53,7 @@ public class WeatherApi {
 //        }
 //    }
     
-    public func getWeather2() -> Promise<WeatherForecast> {
+    public func getWeather() -> Promise<WeatherForecast> {
         return Promise<WeatherForecast> { fulfill, reject in
             
             // Performing an Alamofire request to get the data from the URL

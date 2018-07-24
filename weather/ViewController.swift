@@ -40,7 +40,7 @@ class WeatherTableViewCell: UITableViewCell {
 //    private func refreshWeather() {
 //        activityIndicator.startAnimating()
 //
-//        weatherApi.getWeather()
+//        weatherApi.getWeather2()
 //            .then { [weak self] weather -> Void in
 //                self?.weather = weather
 //                self?.weatherTableView.reloadData()
@@ -115,7 +115,7 @@ class ViewController: UIViewController {
     private func refreshWeather() {
         activityIndicator.startAnimating()
         
-        weatherApi.getWeather2()
+        weatherApi.getWeather()
             .then { [weak self] weather -> Void in
                 self?.weather = weather
                 self?.weatherTableView.reloadData()
@@ -159,8 +159,8 @@ extension ViewController: UITableViewDataSource {
         
         let iconUrl = URL(string: "https://openweathermap.org/img/w/\(weatherElement.weather.first?.icon ?? "").png")
         
-        cell.dateLabel.text = weatherElement.dt_txt
-        cell.temperatureLabel.text = "\(Int(weatherElement.main.temp))°C"
+        cell.dateLabel.text = weatherElement.date
+        cell.temperatureLabel.text = "\(Int(weatherElement.main.temperature))°C"
         cell.descriptionLabel.text = weatherElement.weather.first?.description
         cell.iconImageView.af_setImage(withURL: iconUrl!)
         
