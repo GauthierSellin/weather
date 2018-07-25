@@ -34,6 +34,8 @@ class ViewController: UIViewController {
         weatherTableView.dataSource = self
         weatherTableView.delegate = self
         
+        activityIndicator.backgroundColor = UIColor(white: 0.3, alpha: 0.8)
+        activityIndicator.layer.cornerRadius = 10        
         refreshWeather()
     }
     
