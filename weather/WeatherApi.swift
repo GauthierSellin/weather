@@ -22,15 +22,18 @@ public class WeatherApi {
                 switch response.result {
                 case .success:
                     // the response data to parse
-                    let json = response.data
-                    do {
-                        let decoder = JSONDecoder()
-                        
-                        let myStruct = try decoder.decode(WeatherForecast.self, from: json!)
-                        print(myStruct)
-                        fulfill(myStruct)
-                    } catch let err {
-                        reject(err)
+                    if let json = response.data {
+                        do {
+                            let decoder = JSONDecoder()
+                            
+                            let myStruct = try decoder.decode(WeatherForecast.self, from: json)
+                            print(myStruct)
+                            fulfill(myStruct)
+                        } catch let err {
+                            reject(err)
+                        }
+                    } else {
+                        print("Erreur : pas de données")
                     }
                 case .failure(let error):
                     reject(error)

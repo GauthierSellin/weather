@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		03AAF2964CEC82C726FB4D7F /* Pods_weatherTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1A25EB047463E2D24F4CC97 /* Pods_weatherTests.framework */; };
+		1D0339DE2108D2CA00E37932 /* weatherLaunchScreen.png in Resources */ = {isa = PBXBuildFile; fileRef = 1D0339DD2108D2C900E37932 /* weatherLaunchScreen.png */; };
 		1D2263442102121E0072B571 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D2263432102121E0072B571 /* AppDelegate.swift */; };
 		1D2263462102121E0072B571 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D2263452102121E0072B571 /* ViewController.swift */; };
 		1D2263492102121E0072B571 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1D2263472102121E0072B571 /* Main.storyboard */; };
@@ -41,6 +42,7 @@
 /* Begin PBXFileReference section */
 		0DE2EC9F90D3D4617CB4FE32 /* Pods_weather.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_weather.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1458EEFBE37125E01903CA4E /* Pods-weather.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-weather.release.xcconfig"; path = "Pods/Target Support Files/Pods-weather/Pods-weather.release.xcconfig"; sourceTree = "<group>"; };
+		1D0339DD2108D2C900E37932 /* weatherLaunchScreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = weatherLaunchScreen.png; sourceTree = "<group>"; };
 		1D2263402102121E0072B571 /* weather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = weather.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1D2263432102121E0072B571 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1D2263452102121E0072B571 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -139,6 +141,7 @@
 				1D22634A2102121F0072B571 /* Assets.xcassets */,
 				1D22634C2102121F0072B571 /* LaunchScreen.storyboard */,
 				1D22634F2102121F0072B571 /* Info.plist */,
+				1D0339DD2108D2C900E37932 /* weatherLaunchScreen.png */,
 			);
 			path = weather;
 			sourceTree = "<group>";
@@ -289,6 +292,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1D22634E2102121F0072B571 /* LaunchScreen.storyboard in Resources */,
+				1D0339DE2108D2CA00E37932 /* weatherLaunchScreen.png in Resources */,
 				1D22634B2102121F0072B571 /* Assets.xcassets in Resources */,
 				1D2263492102121E0072B571 /* Main.storyboard in Resources */,
 			);
@@ -588,7 +592,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = SVUXU5E53N;
 				INFOPLIST_FILE = weather/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.gs.weather;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -604,7 +611,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = SVUXU5E53N;
 				INFOPLIST_FILE = weather/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.gs.weather;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -620,7 +630,11 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = weatherTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.gs.weatherTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -637,7 +651,11 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = weatherTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.gs.weatherTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -653,7 +671,11 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = weatherUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.gs.weatherUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -669,7 +691,11 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = weatherUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.gs.weatherUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;

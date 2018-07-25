@@ -35,9 +35,6 @@ class ViewController: UIViewController {
         weatherTableView.delegate = self
         
         refreshWeather()
-        
-//        let date = getDate(date: "2018-07-25 15:30:00")
-//        print(date)
     }
     
     private func refreshWeather() {
@@ -101,14 +98,26 @@ extension ViewController: UITableViewDataSource {
         
         let weatherElement = weather.list[indexPath.row]
         
-        let iconUrl = URL(string: "https://openweathermap.org/img/w/\(weatherElement.weather.first?.icon ?? "").png")
-        
         cell.dateLabel.text = getDate(date: weatherElement.date)
         cell.temperatureLabel.text = "\(Int(weatherElement.main.temperature))°C"
-        cell.descriptionLabel.text = (weatherElement.weather.first?.mainDescription)! + " : " + (weatherElement.weather.first?.description)! //weatherElement.weather.first?.description
-        cell.iconImageView.af_setImage(withURL: iconUrl!)
+        
+        if let mainDescript = weatherElement.weather.first?.mainDescription, let descript = weatherElement.weather.first?.description {
+            cell.descriptionLabel.text = mainDescript + " : " + descript
+        } else {
+            print("Description indisponible")
+        }
+        
+        if let iconUrl = URL(string: "https://openweathermap.org/img/w/\(weatherElement.weather.first?.icon ?? "").png") {
+            cell.iconImageView.af_setImage(withURL: iconUrl)
+        } else {
+            print("Icône indisponible")
+        }
         
         return cell
+    }
+    
+    public func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return "Meteo"
     }
     
 }
