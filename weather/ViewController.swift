@@ -35,6 +35,9 @@ class ViewController: UIViewController {
         weatherTableView.delegate = self
         
         refreshWeather()
+        
+//        let date = getDate(date: "2018-07-25 15:30:00")
+//        print(date)
     }
     
     private func refreshWeather() {
@@ -49,6 +52,22 @@ class ViewController: UIViewController {
             }.always {
                 self.activityIndicator.stopAnimating()
         }
+    }
+    
+    private func getDate(date dateString: String) -> String {
+        let dateFormatterGet = DateFormatter()
+        dateFormatterGet.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        
+        let dateFormatterPrint = DateFormatter()
+        dateFormatterPrint.dateFormat = "EEEE dd MMMM HH:mm"
+        dateFormatterPrint.locale = Locale(identifier: "fr_FR")
+        
+        if let date = dateFormatterGet.date(from: dateString) {
+            return dateFormatterPrint.string(from: date)
+        } else {
+            print("There was an error decoding the string")
+        }
+        return dateString
     }
     
 }
@@ -84,9 +103,9 @@ extension ViewController: UITableViewDataSource {
         
         let iconUrl = URL(string: "https://openweathermap.org/img/w/\(weatherElement.weather.first?.icon ?? "").png")
         
-        cell.dateLabel.text = weatherElement.date
+        cell.dateLabel.text = getDate(date: weatherElement.date)
         cell.temperatureLabel.text = "\(Int(weatherElement.main.temperature))°C"
-        cell.descriptionLabel.text = weatherElement.weather.first?.description
+        cell.descriptionLabel.text = (weatherElement.weather.first?.mainDescription)! + " : " + (weatherElement.weather.first?.description)! //weatherElement.weather.first?.description
         cell.iconImageView.af_setImage(withURL: iconUrl!)
         
         return cell
