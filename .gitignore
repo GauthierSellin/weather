@@ -18,6 +18,8 @@ profile
 DerivedData
 *.hmap
 *.ipa
+weather.xcodeproj/xcuserdata/*
+weather.xcodeproj/project.xcworkspace/xcuserdata/*
 
 # Bundler
 .bundle
