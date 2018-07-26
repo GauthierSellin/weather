@@ -21,8 +21,17 @@ class WeatherTableViewCell: UITableViewCell {
 
 class ViewController: UIViewController {
     
-    let weatherApi = WeatherApi()
-    var weather = WeatherForecast()
+    fileprivate let weatherApi = WeatherApi()
+    fileprivate var weather = WeatherForecast()
+    
+    lazy var refreshControl: UIRefreshControl = {
+        let refreshControl = UIRefreshControl()
+        
+        refreshControl.addTarget(self, action: #selector(ViewController.handleRefresh(_:)), for: UIControlEvents.valueChanged)
+        refreshControl.tintColor = UIColor.red
+        
+        return refreshControl
+    }()
     
     @IBOutlet weak var weatherTableView: UITableView!
     
@@ -34,12 +43,12 @@ class ViewController: UIViewController {
         weatherTableView.dataSource = self
         weatherTableView.delegate = self
         
-//        activityIndicator.backgroundColor = UIColor(white: 0.3, alpha: 0.8)
-//        activityIndicator.layer.cornerRadius = 10
         refreshWeather()
+        
+        self.weatherTableView.addSubview(self.refreshControl)
     }
     
-    private func refreshWeather() {
+    fileprivate func refreshWeather() {
         activityIndicator.startAnimating()
         
         weatherApi.getWeather()
@@ -50,10 +59,17 @@ class ViewController: UIViewController {
                 print(error.localizedDescription)
             }.always {
                 self.activityIndicator.stopAnimating()
+                
         }
     }
     
-    private func getDate(date dateString: String) -> String {
+    @objc func handleRefresh(_ refreshControl: UIRefreshControl) {
+        refreshWeather()
+        
+        refreshControl.endRefreshing()
+    }
+    
+    fileprivate func getDate(date dateString: String) -> String {
         let dateFormatterGet = DateFormatter()
         dateFormatterGet.dateFormat = "yyyy-MM-dd HH:mm:ss"
         
@@ -91,11 +107,7 @@ extension ViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = weatherTableView.dequeueReusableCell(withIdentifier: "WeatherCell", for: indexPath) as? WeatherTableViewCell else {
-            fatalError("Cell type is not supported.")
-        }
-        
-        guard indexPath.row < weather.list.count else {
-            fatalError("Index of bound when getting weather.")
+            return UITableViewCell()
         }
         
         let weatherElement = weather.list[indexPath.row]

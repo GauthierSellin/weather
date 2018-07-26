@@ -36,7 +36,6 @@ public class WeatherApi {
                             let myStruct = try decoder.decode(WeatherForecast.self, from: json)
                             fulfill(myStruct)
                         } catch let err {
-                            print("invalide json")
                             reject(err)
                         }
                     } else {
