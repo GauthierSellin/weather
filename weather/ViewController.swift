@@ -34,8 +34,8 @@ class ViewController: UIViewController {
         weatherTableView.dataSource = self
         weatherTableView.delegate = self
         
-        activityIndicator.backgroundColor = UIColor(white: 0.3, alpha: 0.8)
-        activityIndicator.layer.cornerRadius = 10        
+//        activityIndicator.backgroundColor = UIColor(white: 0.3, alpha: 0.8)
+//        activityIndicator.layer.cornerRadius = 10
         refreshWeather()
     }
     
@@ -74,7 +74,7 @@ class ViewController: UIViewController {
 extension ViewController: UITableViewDelegate {
     
     public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100
+        return 70
     }
     
 }
@@ -103,8 +103,8 @@ extension ViewController: UITableViewDataSource {
         cell.dateLabel.text = getDate(date: weatherElement.date)
         cell.temperatureLabel.text = "\(Int(weatherElement.main.temperature))°C"
         
-        if let mainDescript = weatherElement.weather.first?.mainDescription, let descript = weatherElement.weather.first?.description {
-            cell.descriptionLabel.text = mainDescript + " : " + descript
+        if let weatherDescription = weatherElement.weather.first?.description {
+            cell.descriptionLabel.text = "- " + weatherDescription
         } else {
             print("Description indisponible")
         }
@@ -118,8 +118,8 @@ extension ViewController: UITableViewDataSource {
         return cell
     }
     
-    public func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "Meteo"
-    }
+//    public func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+//        return "Meteo"
+//    }
     
 }
