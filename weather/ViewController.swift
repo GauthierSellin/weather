@@ -28,7 +28,8 @@ class ViewController: UIViewController {
         let refreshControl = UIRefreshControl()
         
         refreshControl.addTarget(self, action: #selector(ViewController.handleRefresh(_:)), for: UIControlEvents.valueChanged)
-        refreshControl.tintColor = UIColor.red
+        refreshControl.tintColor = UIColor.orange
+        refreshControl.attributedTitle = NSAttributedString(string: "Tirer pour rafraîchir")
         
         return refreshControl
     }()
@@ -49,7 +50,9 @@ class ViewController: UIViewController {
     }
     
     fileprivate func refreshWeather() {
-        activityIndicator.startAnimating()
+//        activityIndicator.startAnimating()
+        let progressHUD = ProgressHUD(text: "Chargement")
+        self.view.addSubview(progressHUD)
         
         weatherApi.getWeather()
             .then { [weak self] weather -> Void in
@@ -58,8 +61,8 @@ class ViewController: UIViewController {
             }.catch { error in
                 print(error.localizedDescription)
             }.always {
-                self.activityIndicator.stopAnimating()
-                
+//                self.activityIndicator.stopAnimating()
+                progressHUD.hide()
         }
     }
     
