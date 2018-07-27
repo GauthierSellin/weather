@@ -81,14 +81,29 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="m5n-pR-r7X" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="EZt-1s-CLY"/>
-                            <constraint firstItem="m5n-pR-r7X" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="p4l-rT-FxV"/>
+                            <constraint firstItem="m5n-pR-r7X" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="VnP-3d-7cJ"/>
                             <constraint firstItem="m5n-pR-r7X" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="ryB-ZL-TH4"/>
                             <constraint firstItem="m5n-pR-r7X" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="rzh-Fy-MfO"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Météo Paris" id="Hpk-tp-n4S"/>
+                    <navigationItem key="navigationItem" title="Météo Paris" id="Hpk-tp-n4S">
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="sbd-yw-ORF">
+                            <segmentedControl key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="u9q-iz-vr0">
+                                <rect key="frame" x="298" y="7.5" width="61" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <segments>
+                                    <segment title="°C"/>
+                                    <segment title="°F"/>
+                                </segments>
+                                <connections>
+                                    <action selector="indexChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="KPI-2m-T6C"/>
+                                </connections>
+                            </segmentedControl>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
+                        <outlet property="segmentedControl" destination="u9q-iz-vr0" id="852-dR-0fK"/>
                         <outlet property="weatherTableView" destination="m5n-pR-r7X" id="mcK-Zl-hCy"/>
                     </connections>
                 </viewController>

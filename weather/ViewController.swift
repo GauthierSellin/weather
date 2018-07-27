@@ -26,6 +26,7 @@ class ViewController: UIViewController {
     
     fileprivate let dateFormatter = DateFormatter()
     
+    // pullToRefresh mechanism
     lazy var refreshControl: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
         
@@ -36,6 +37,12 @@ class ViewController: UIViewController {
     }()
     
     @IBOutlet weak var weatherTableView: UITableView!
+    @IBOutlet weak var segmentedControl: UISegmentedControl!
+    
+    @IBAction func indexChanged(_ sender: Any) {
+        refreshWeather(unit: segmentedControl.selectedSegmentIndex)
+        UserDefaults.standard.set(segmentedControl.selectedSegmentIndex, forKey: "userUnit")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,16 +53,18 @@ class ViewController: UIViewController {
         self.dateFormatter.dateStyle = DateFormatter.Style.short
         self.dateFormatter.timeStyle = DateFormatter.Style.short
         
-        refreshWeather()
+        segmentedControl.selectedSegmentIndex = UserDefaults.standard.integer(forKey: "userUnit")
+        
+        refreshWeather(unit: segmentedControl.selectedSegmentIndex)
         
         self.weatherTableView.addSubview(self.refreshControl)
     }
     
-    fileprivate func refreshWeather() {
+    fileprivate func refreshWeather(unit: Int) {
         let activityIndicator = CustomActivityIndicator(text: "Chargement")
         self.view.addSubview(activityIndicator)
         
-        weatherApi.getWeather()
+        weatherApi.getWeather(unit)
             .then { [weak self] weather -> Void in
                 self?.weather = weather
                 
@@ -73,7 +82,7 @@ class ViewController: UIViewController {
     }
     
     @objc fileprivate func handleRefresh(_ refreshControl: UIRefreshControl) {
-        refreshWeather()
+        refreshWeather(unit: segmentedControl.selectedSegmentIndex)
         
         refreshControl.endRefreshing()
     }
@@ -122,7 +131,7 @@ extension ViewController: UITableViewDataSource {
         let weatherElement = weather.list[indexPath.row]
         
         cell.dateLabel.text = getDate(date: weatherElement.date)
-        cell.temperatureLabel.text = "\(Int(weatherElement.main.temperature))°C"
+        cell.temperatureLabel.text = "\(Int(weatherElement.main.temperature))°" + ((segmentedControl.selectedSegmentIndex == 0) ? "C" : "F")
         
         if let weatherDescription = weatherElement.weather.first?.description {
             cell.descriptionLabel.text = "- " + weatherDescription
