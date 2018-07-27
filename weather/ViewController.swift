@@ -26,7 +26,7 @@ class ViewController: UIViewController {
     
     fileprivate let dateFormatter = DateFormatter()
     
-    // pullToRefresh mechanism
+    // PullToRefresh mechanism
     lazy var refreshControl: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
         
@@ -39,6 +39,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var weatherTableView: UITableView!
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     
+    // Switch temperature unit (°C or °F)
     @IBAction func indexChanged(_ sender: Any) {
         refreshWeather(unit: segmentedControl.selectedSegmentIndex)
         UserDefaults.standard.set(segmentedControl.selectedSegmentIndex, forKey: "userUnit")

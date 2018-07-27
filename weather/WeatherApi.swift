@@ -12,7 +12,7 @@ import PromiseKit
 
 public class WeatherApi {
     
-    // url to fetch data from OpenWeatherMap
+    // URL to fetch data from OpenWeatherMap
     private let baseUrl = "https://api.openweathermap.org/data/2.5/"
     private let forecasteUrl = "forecast"
     private let cityId = "?id=6455259" // Paris ID
