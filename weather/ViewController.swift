@@ -24,19 +24,18 @@ class ViewController: UIViewController {
     fileprivate let weatherApi = WeatherApi()
     fileprivate var weather = WeatherForecast()
     
+    fileprivate let dateFormatter = DateFormatter()
+    
     lazy var refreshControl: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
         
         refreshControl.addTarget(self, action: #selector(ViewController.handleRefresh(_:)), for: UIControlEvents.valueChanged)
         refreshControl.tintColor = UIColor.orange
-        refreshControl.attributedTitle = NSAttributedString(string: "Tirer pour rafraîchir")
         
         return refreshControl
     }()
     
     @IBOutlet weak var weatherTableView: UITableView!
-    
-    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,29 +43,36 @@ class ViewController: UIViewController {
         weatherTableView.dataSource = self
         weatherTableView.delegate = self
         
+        self.dateFormatter.dateStyle = DateFormatter.Style.short
+        self.dateFormatter.timeStyle = DateFormatter.Style.short
+        
         refreshWeather()
         
         self.weatherTableView.addSubview(self.refreshControl)
     }
     
     fileprivate func refreshWeather() {
-//        activityIndicator.startAnimating()
-        let progressHUD = ProgressHUD(text: "Chargement")
-        self.view.addSubview(progressHUD)
+        let activityIndicator = CustomActivityIndicator(text: "Chargement")
+        self.view.addSubview(activityIndicator)
         
         weatherApi.getWeather()
             .then { [weak self] weather -> Void in
                 self?.weather = weather
+                
+                // update pullToRefresh date
+                let now = Date()
+                let updateString = "Dernière MAJ : " + (self?.dateFormatter.string(from: now) ?? "")
+                self?.refreshControl.attributedTitle = NSAttributedString(string: updateString)
+                
                 self?.weatherTableView.reloadData()
             }.catch { error in
                 print(error.localizedDescription)
             }.always {
-//                self.activityIndicator.stopAnimating()
-                progressHUD.hide()
+                activityIndicator.hide()
         }
     }
     
-    @objc func handleRefresh(_ refreshControl: UIRefreshControl) {
+    @objc fileprivate func handleRefresh(_ refreshControl: UIRefreshControl) {
         refreshWeather()
         
         refreshControl.endRefreshing()

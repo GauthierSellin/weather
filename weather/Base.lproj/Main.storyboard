@@ -77,16 +77,10 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="9h4-a4-u2S" userLabel="Activity Indicator">
-                                <rect key="frame" x="169" y="315" width="37" height="37"/>
-                                <color key="color" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="9h4-a4-u2S" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="28k-vo-ouV"/>
                             <constraint firstItem="m5n-pR-r7X" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="EZt-1s-CLY"/>
-                            <constraint firstItem="9h4-a4-u2S" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Zb5-Hc-vD7"/>
                             <constraint firstItem="m5n-pR-r7X" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="p4l-rT-FxV"/>
                             <constraint firstItem="m5n-pR-r7X" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="ryB-ZL-TH4"/>
                             <constraint firstItem="m5n-pR-r7X" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="rzh-Fy-MfO"/>
@@ -95,7 +89,6 @@
                     </view>
                     <navigationItem key="navigationItem" title="Météo Paris" id="Hpk-tp-n4S"/>
                     <connections>
-                        <outlet property="activityIndicator" destination="9h4-a4-u2S" id="OYw-tP-oom"/>
                         <outlet property="weatherTableView" destination="m5n-pR-r7X" id="mcK-Zl-hCy"/>
                     </connections>
                 </viewController>

@@ -1,5 +1,5 @@
 //
-//  ProgressHUD.swift
+//  CustomActivityIndicator.swift
 //  weather
 //
 //  Created by Sellin Gauthier on 26/07/2018.
@@ -9,18 +9,18 @@
 import Foundation
 import UIKit
 
-class ProgressHUD: UIVisualEffectView {
+class CustomActivityIndicator: UIVisualEffectView {
     
-    var text: String? {
+    fileprivate var text: String? {
         didSet {
             label.text = text
         }
     }
     
-    let activityIndictor: UIActivityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.gray)
-    let label: UILabel = UILabel()
-    let blurEffect = UIBlurEffect(style: .light)
-    let vibrancyView: UIVisualEffectView
+    fileprivate let activityIndictor: UIActivityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.gray)
+    fileprivate let label: UILabel = UILabel()
+    fileprivate let blurEffect = UIBlurEffect(style: .light)
+    fileprivate let vibrancyView: UIVisualEffectView
     
     init(text: String) {
         self.text = text
@@ -36,7 +36,7 @@ class ProgressHUD: UIVisualEffectView {
         self.setup()
     }
     
-    func setup() {
+    fileprivate func setup() {
         contentView.addSubview(vibrancyView)
         contentView.addSubview(activityIndictor)
         contentView.addSubview(label)
