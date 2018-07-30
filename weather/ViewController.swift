@@ -24,18 +24,26 @@ class ViewController: UIViewController {
     fileprivate let weatherApi = WeatherApi()
     fileprivate var weather = WeatherForecast()
     
+    fileprivate let dateFormatter = DateFormatter()
+    
+    // PullToRefresh mechanism
     lazy var refreshControl: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
         
         refreshControl.addTarget(self, action: #selector(ViewController.handleRefresh(_:)), for: UIControlEvents.valueChanged)
-        refreshControl.tintColor = UIColor.red
+        refreshControl.tintColor = UIColor.orange
         
         return refreshControl
     }()
     
     @IBOutlet weak var weatherTableView: UITableView!
+    @IBOutlet weak var segmentedControl: UISegmentedControl!
     
-    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    // Switch temperature unit (°C or °F)
+    @IBAction func indexChanged(_ sender: Any) {
+        refreshWeather(unit: segmentedControl.selectedSegmentIndex)
+        UserDefaults.standard.set(segmentedControl.selectedSegmentIndex, forKey: "userUnit")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,28 +51,39 @@ class ViewController: UIViewController {
         weatherTableView.dataSource = self
         weatherTableView.delegate = self
         
-        refreshWeather()
+        self.dateFormatter.dateStyle = DateFormatter.Style.short
+        self.dateFormatter.timeStyle = DateFormatter.Style.short
+        
+        segmentedControl.selectedSegmentIndex = UserDefaults.standard.integer(forKey: "userUnit")
+        
+        refreshWeather(unit: segmentedControl.selectedSegmentIndex)
         
         self.weatherTableView.addSubview(self.refreshControl)
     }
     
-    fileprivate func refreshWeather() {
-        activityIndicator.startAnimating()
+    fileprivate func refreshWeather(unit: Int) {
+        let activityIndicator = CustomActivityIndicator(text: "Chargement")
+        self.view.addSubview(activityIndicator)
         
-        weatherApi.getWeather()
+        weatherApi.getWeather(unit)
             .then { [weak self] weather -> Void in
                 self?.weather = weather
+                
+                // update pullToRefresh date
+                let now = Date()
+                let updateString = "Dernière MAJ : " + (self?.dateFormatter.string(from: now) ?? "")
+                self?.refreshControl.attributedTitle = NSAttributedString(string: updateString)
+                
                 self?.weatherTableView.reloadData()
             }.catch { error in
                 print(error.localizedDescription)
             }.always {
-                self.activityIndicator.stopAnimating()
-                
+                activityIndicator.hide()
         }
     }
     
-    @objc func handleRefresh(_ refreshControl: UIRefreshControl) {
-        refreshWeather()
+    @objc fileprivate func handleRefresh(_ refreshControl: UIRefreshControl) {
+        refreshWeather(unit: segmentedControl.selectedSegmentIndex)
         
         refreshControl.endRefreshing()
     }
@@ -97,10 +116,6 @@ extension ViewController: UITableViewDelegate {
 
 extension ViewController: UITableViewDataSource {
     
-    public func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return weather.list.count
     }
@@ -113,7 +128,7 @@ extension ViewController: UITableViewDataSource {
         let weatherElement = weather.list[indexPath.row]
         
         cell.dateLabel.text = getDate(date: weatherElement.date)
-        cell.temperatureLabel.text = "\(Int(weatherElement.main.temperature))°C"
+        cell.temperatureLabel.text = "\(Int(weatherElement.main.temperature))°" + ((segmentedControl.selectedSegmentIndex == 0) ? "C" : "F")
         
         if let weatherDescription = weatherElement.weather.first?.description {
             cell.descriptionLabel.text = "- " + weatherDescription
@@ -129,9 +144,5 @@ extension ViewController: UITableViewDataSource {
         
         return cell
     }
-    
-//    public func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-//        return "Meteo"
-//    }
     
 }

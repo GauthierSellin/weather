@@ -12,18 +12,26 @@ import PromiseKit
 
 public class WeatherApi {
     
+    // URL to fetch data from OpenWeatherMap
     private let baseUrl = "https://api.openweathermap.org/data/2.5/"
     private let forecasteUrl = "forecast"
-    private let cityId = "?id=6455259"
-    private let appId = "&appid=191fd4d1087569b2e5ac9e98043e8402"
-    private let params = "&lang=fr&units=metric"
+    private let cityId = "?id=6455259" // Paris ID
+    private let appId = "&appid=191fd4d1087569b2e5ac9e98043e8402" // account ID
+    private let paramLang = "&lang=fr" // language: french
     
-    public func getWeather() -> Promise<WeatherForecast> {
+    public enum Unit: String {
+        case celsius = "metric"
+        case fahrenheit = "imperial"
+    }
+    
+    public func getWeather(_ unit: Int) -> Promise<WeatherForecast> {
         return Promise<WeatherForecast> { fulfill, reject in
-            guard let weatherUrl = URL(string: baseUrl + forecasteUrl + cityId + appId + params) else {
+            let paramUnit = (unit == 0) ? "&units=\(Unit.celsius.rawValue)" : "&units=\(Unit.fahrenheit.rawValue)"
+            guard let weatherUrl = URL(string: baseUrl + forecasteUrl + cityId + appId + paramLang + paramUnit) else {
                 reject(WeatherApi.ApiError.invalidUrl)
                 return
             }
+            
             // Performing an Alamofire request to get the data from the URL
             Alamofire.request(weatherUrl).responseJSON { response in
                 switch response.result {
