@@ -17,7 +17,7 @@ class WeatherTests: XCTestCase {
         
         let expectationEnd = expectation(description: "End of getWeather")
         
-        weatherApi.getWeather()
+        weatherApi.getWeather(0)
             .then { weather -> Void in
                 XCTAssertEqual(weather.list.count, 40)
                 
