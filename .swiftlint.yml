@@ -3,6 +3,7 @@ disabled_rules:
   - trailing_whitespace
   - todo
   - conditional_binding_cascade
+  - nesting
 
 # some rules are only opt-in
 opt_in_rules:
