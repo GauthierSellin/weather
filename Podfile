@@ -14,9 +14,4 @@ target 'weather' do
     # Pods for testing
   end
 
-  target 'weatherUITests' do
-    inherit! :search_paths
-    # Pods for testing
-  end
-
 end
