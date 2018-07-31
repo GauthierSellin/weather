@@ -47,12 +47,9 @@
 		1D2263902104B6970072B571 /* WeatherApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherApi.swift; sourceTree = "<group>"; };
 		1DB84F2E210A33AA001BB80A /* CustomActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomActivityIndicator.swift; sourceTree = "<group>"; };
 		949241AB440169FDB49C6B74 /* Pods-weatherTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-weatherTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-weatherTests/Pods-weatherTests.debug.xcconfig"; sourceTree = "<group>"; };
-		9F7B9333F8406265437F9FE6 /* Pods-weatherUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-weatherUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-weatherUITests/Pods-weatherUITests.release.xcconfig"; sourceTree = "<group>"; };
 		BECF1DABA741B612D7960824 /* Pods-weatherTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-weatherTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-weatherTests/Pods-weatherTests.release.xcconfig"; sourceTree = "<group>"; };
 		C1A25EB047463E2D24F4CC97 /* Pods_weatherTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_weatherTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C881E3391813169409CE8C79 /* Pods-weather.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-weather.debug.xcconfig"; path = "Pods/Target Support Files/Pods-weather/Pods-weather.debug.xcconfig"; sourceTree = "<group>"; };
-		CD5727743B6CFC811FF653F9 /* Pods_weatherUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_weatherUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		CE272CCCD7B6ACBC7417C789 /* Pods-weatherUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-weatherUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-weatherUITests/Pods-weatherUITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,8 +79,6 @@
 				1458EEFBE37125E01903CA4E /* Pods-weather.release.xcconfig */,
 				949241AB440169FDB49C6B74 /* Pods-weatherTests.debug.xcconfig */,
 				BECF1DABA741B612D7960824 /* Pods-weatherTests.release.xcconfig */,
-				CE272CCCD7B6ACBC7417C789 /* Pods-weatherUITests.debug.xcconfig */,
-				9F7B9333F8406265437F9FE6 /* Pods-weatherUITests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -146,7 +141,6 @@
 			children = (
 				0DE2EC9F90D3D4617CB4FE32 /* Pods_weather.framework */,
 				C1A25EB047463E2D24F4CC97 /* Pods_weatherTests.framework */,
-				CD5727743B6CFC811FF653F9 /* Pods_weatherUITests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
