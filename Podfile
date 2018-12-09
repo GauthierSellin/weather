@@ -5,7 +5,7 @@ target 'weather' do
 
   # Pods for weather
     pod 'Alamofire', '4.8'
-    pod 'PromiseKit', '~> 4.0'
+    pod 'PromiseKit', '6.7.0'
     pod 'AlamofireImage', '3.5.0'
     pod 'SwiftLint', '0.29.1'
 

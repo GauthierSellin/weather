@@ -25,10 +25,10 @@ public class WeatherApi {
     }
     
     public func getWeather(_ unit: Int) -> Promise<WeatherForecast> {
-        return Promise<WeatherForecast> { fulfill, reject in
+        return Promise<WeatherForecast> { seal in
             let paramUnit = (unit == 0) ? "&units=\(Unit.celsius.rawValue)" : "&units=\(Unit.fahrenheit.rawValue)"
             guard let weatherUrl = URL(string: baseUrl + forecasteUrl + cityId + appId + paramLang + paramUnit) else {
-                reject(WeatherApi.ApiError.invalidUrl)
+                seal.reject(WeatherApi.ApiError.invalidUrl)
                 return
             }
             
@@ -42,16 +42,16 @@ public class WeatherApi {
                             let decoder = JSONDecoder()
                             
                             let myStruct = try decoder.decode(WeatherForecast.self, from: json)
-                            fulfill(myStruct)
+                            seal.fulfill(myStruct)
                         } catch let err {
-                            reject(err)
+                            seal.reject(err)
                         }
                     } else {
                         print("Erreur : pas de données")
-                        reject(WeatherApi.ApiError.weatherNoData)
+                        seal.reject(WeatherApi.ApiError.weatherNoData)
                     }
                 case .failure(let error):
-                    reject(error)
+                    seal.reject(error)
                 }
             }
         }

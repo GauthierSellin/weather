@@ -2,23 +2,21 @@ PODS:
   - Alamofire (4.8.0)
   - AlamofireImage (3.5.0):
     - Alamofire (~> 4.8)
-  - PromiseKit (4.5.2):
-    - PromiseKit/Foundation (= 4.5.2)
-    - PromiseKit/QuartzCore (= 4.5.2)
-    - PromiseKit/UIKit (= 4.5.2)
-  - PromiseKit/CorePromise (4.5.2)
-  - PromiseKit/Foundation (4.5.2):
+  - PromiseKit (6.7.0):
+    - PromiseKit/CorePromise (= 6.7.0)
+    - PromiseKit/Foundation (= 6.7.0)
+    - PromiseKit/UIKit (= 6.7.0)
+  - PromiseKit/CorePromise (6.7.0)
+  - PromiseKit/Foundation (6.7.0):
     - PromiseKit/CorePromise
-  - PromiseKit/QuartzCore (4.5.2):
-    - PromiseKit/CorePromise
-  - PromiseKit/UIKit (4.5.2):
+  - PromiseKit/UIKit (6.7.0):
     - PromiseKit/CorePromise
   - SwiftLint (0.29.1)
 
 DEPENDENCIES:
   - Alamofire (= 4.8)
   - AlamofireImage (= 3.5.0)
-  - PromiseKit (~> 4.0)
+  - PromiseKit (= 6.7.0)
   - SwiftLint (= 0.29.1)
 
 SPEC REPOS:
@@ -31,9 +29,9 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   Alamofire: 3ec537f71edc9804815215393ae2b1a8ea33a844
   AlamofireImage: 1aea346f4dda2f6c67622fa5a89fcbb80d79cc16
-  PromiseKit: 743e497a5f505a470d3bbbf4ce0663c1268af0a4
+  PromiseKit: 453ddcc947fe7b302f3ef41882b81d31c554df7f
   SwiftLint: 6772320e40b52049053a518c17db9b0634a0b45a
 
-PODFILE CHECKSUM: 09c29b67b9e61a27501127f98aa53697d5c3b4d2
+PODFILE CHECKSUM: f61477ecfca7335633ea6831d71f2808077f7ada
 
 COCOAPODS: 1.5.3

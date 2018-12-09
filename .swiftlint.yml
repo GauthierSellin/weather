@@ -1,7 +1,6 @@
 # rule identifiers to exclude from running
 disabled_rules:
   - trailing_whitespace
-  - todo
   - conditional_binding_cascade
   - nesting
 
