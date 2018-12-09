@@ -20,6 +20,7 @@ DerivedData
 *.ipa
 weather.xcodeproj/xcuserdata/*
 weather.xcodeproj/project.xcworkspace/xcuserdata/*
+Pods
 
 # Bundler
 .bundle

@@ -4,10 +4,10 @@ target 'weather' do
   use_frameworks!
 
   # Pods for weather
-    pod 'Alamofire', '~> 4.7'
+    pod 'Alamofire', '4.8'
     pod 'PromiseKit', '~> 4.0'
-    pod 'AlamofireImage'
-    pod 'SwiftLint'
+    pod 'AlamofireImage', '3.5.0'
+    pod 'SwiftLint', '0.29.1'
 
   target 'weatherTests' do
     inherit! :search_paths
