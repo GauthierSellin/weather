@@ -30,7 +30,7 @@ class ViewController: UIViewController {
     lazy var refreshControl: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
         
-        refreshControl.addTarget(self, action: #selector(ViewController.handleRefresh(_:)), for: UIControlEvents.valueChanged)
+        refreshControl.addTarget(self, action: #selector(ViewController.handleRefresh(_:)), for: UIControl.Event.valueChanged)
         refreshControl.tintColor = UIColor.orange
         
         return refreshControl
@@ -66,7 +66,7 @@ class ViewController: UIViewController {
         self.view.addSubview(activityIndicator)
         
         weatherApi.getWeather(unit)
-            .then { [weak self] weather -> Void in
+            .done { [weak self] weather -> Void in
                 self?.weather = weather
                 
                 // update pullToRefresh date
@@ -77,7 +77,7 @@ class ViewController: UIViewController {
                 self?.weatherTableView.reloadData()
             }.catch { error in
                 print(error.localizedDescription)
-            }.always {
+            }.finally {
                 activityIndicator.hide()
         }
     }

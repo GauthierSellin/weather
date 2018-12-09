@@ -17,7 +17,7 @@ class CustomActivityIndicator: UIVisualEffectView {
         }
     }
     
-    fileprivate let activityIndictor: UIActivityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.gray)
+    fileprivate let activityIndictor: UIActivityIndicatorView = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.gray)
     fileprivate let label: UILabel = UILabel()
     fileprivate let blurEffect = UIBlurEffect(style: .light)
     fileprivate let vibrancyView: UIVisualEffectView
