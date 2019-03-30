@@ -23,6 +23,7 @@ class ViewController: UIViewController {
     
     fileprivate let weatherApi = WeatherApi()
     fileprivate var weather = WeatherForecast()
+    fileprivate let activityIndicator = CustomActivityIndicator(text: "Chargement")
     
     fileprivate let dateFormatter = DateFormatter()
     
@@ -48,6 +49,8 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.view.addSubview(activityIndicator)
+        
         weatherTableView.dataSource = self
         weatherTableView.delegate = self
         
@@ -62,8 +65,7 @@ class ViewController: UIViewController {
     }
     
     fileprivate func refreshWeather(unit: Int) {
-        let activityIndicator = CustomActivityIndicator(text: "Chargement")
-        self.view.addSubview(activityIndicator)
+        self.activityIndicator.show()
         
         weatherApi.getWeather(unit)
             .done { [weak self] weather -> Void in
@@ -78,7 +80,7 @@ class ViewController: UIViewController {
             }.catch { error in
                 print(error.localizedDescription)
             }.finally {
-                activityIndicator.hide()
+                self.activityIndicator.hide()
         }
     }
     
